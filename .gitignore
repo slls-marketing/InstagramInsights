@@ -1,0 +1,9 @@
+venv/
+
+*.swp
+service_account.json
+.env
+__pycache__
+
+.DS_Store
+
