@@ -25,9 +25,9 @@ def get_worksheet() -> Optional[gspread.Worksheet]:
         sheet_name: str = os.environ["WORKSHEET_NAME"]
 
         credentials = json.loads(raw_json)
-        client=gspread.service_account("/Users/sgomes/InstagramInsights/service_account.json")
-        # client = gspread.service_account_from_dict(credentials)
+        client = gspread.service_account_from_dict(credentials)
         sheet = client.open_by_key(sheet_id).worksheet(sheet_name)
+        # sheet = client.open("SUMMER analytics").worksheet(sheet_name)
 
         print_success("Google Sheets connection initialized successfully")
         return sheet
@@ -300,5 +300,3 @@ def clear_worksheet() -> None:
     except Exception as e:
         print_error(f"Unexpected error in clear: {e}")
     return None
-
-run_etl_update()
